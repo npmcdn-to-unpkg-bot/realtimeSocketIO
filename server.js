@@ -1,4 +1,5 @@
 // modules -----------------
+var port = process.env.PORT || 8181;
 
 var express = require('express'),
     app = express(),
@@ -9,12 +10,12 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-server.listen(8181);
+server.listen(port);
 
 // config file connection db
 // var db = require('./config/db');
 
-var port = process.env.PORT || 8181;
+
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.app+json' }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -55,4 +56,4 @@ io.sockets.on('connection', function (socket) {
 });
 
 exports = module.exports = app;
-console.log('Server Active on port 8181');
+console.log('Server Active on port ' + port);
