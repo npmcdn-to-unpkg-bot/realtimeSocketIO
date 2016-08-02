@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+
+    <title>Chat Online</title>
+
+    <script src="./libs/JQuery/jquery-2.2.4.js"></script>
+    <!-- CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+
+    <!-- FRAMEWORK JS -->
+    <script src="./libs/angular-1.5.8/angular.js"></script>
+    <script src="./libs/angular-1.5.8/angular-route.js"></script>
+
+    <!-- FILES JS OWNER -->
+    <script src="./js/controllers/chatCtrl.js"></script>    
+    <script src="./js/appRoutes.js"></script>
+    <script src="./js/app.js"></script>
+    
+   
+   <style>
+        #chatWrap {
+            float: left;
+        }
+        
+        #chat {
+            position: relative;
+            width: 100%;
+            float: left;
+            min-height: 100px;
+            height: 90%;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body ng-app="sampleChat">
+
+    <div ng-view></div>    
+    
+</body>
+</html>

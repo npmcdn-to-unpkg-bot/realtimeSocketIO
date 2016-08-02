@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Chat Online - socketio.js</h1>
+    </div>
+
+    <div class="input-group" style="width:300px;text-align:center;margin:0 auto;">
+        <input type="text" id="name" ng-model="user" class="form-control input-lg" placeholder="Enter your Name" />
+        <span class="input-group-btn">
+                <button class="btn btn-success btn-lg" type="submit" 
+                    id="btnNick">OK</button>
+            </span>
+    </div>
+
+    <div class="alert fade in alert-danger alert-dismissable" data-dismiss="alert" id="login-error" style="display:none;">
+        <button type="button" class="close" id="closeAlert">x</button> User registration failed.
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+ (function(window) {
+
+            var socket = io.connect();
+            var $nickButton = $('#btnNick');
+            var $nickName = $('#name');
+            var $closeAlert = $('#closeAlert');    
+
+            $nickButton.click(function(e) {
+            
+                var nicknew = $nickName.val();
+                console.log(nicknew);                
+                socket.emit('new user', nicknew, function(data) {
+                    if(!data) {
+                        $('#login-error').show();
+                    } else {                        
+                        window.location = '/room/' + nicknew;
+                    }
+                });
+            });
+
+            $closeAlert.click(function(e) {
+                $('#login-error').hide();
+            });
+
+}(window));
+</script>
